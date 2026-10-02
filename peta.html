@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebGIS Evakuasi Tsunami — Beranda</title>
+
+<style>
+:root{
+  --bar:#ffb24d; --bar-ink:#3a2408; --bar-ink-dim:#8a5a1f; --bar-line:#f0a030;
+  --surface:#ffffff; --surface-2:#f3f5f6;
+  --ink:#30281b; --ink-dim:#5b6670; --line:#d8dee3;
+  --accent:#e8720c; --ok:#1a8754; --warn:#b3690a; --danger:#b3362b;
+  --radius:4px;
+}
+*{ box-sizing:border-box; }
+html, body{ margin:0; min-height:100%; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--ink); background:var(--surface-2); }
+
+/* ========== Header kecil, konsisten dengan dashboard peta ========== */
+header{
+  height:56px; background:var(--bar); border-bottom:1px solid var(--bar-line);
+  display:flex; align-items:center; padding:0 24px; gap:12px;
+}
+header img{ height:32px; width:auto; }
+header h1{ font-size:14.5px; font-weight:700; margin:0; color:var(--bar-ink); }
+header span{ font-size:11px; color:var(--bar-ink-dim); display:block; margin-top:1px; }
+
+/* ========== Konten utama ========== */
+.wrap{ max-width:880px; margin:0 auto; padding:56px 24px 72px; }
+
+.hero{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:44px 40px; text-align:center;
+}
+.hero .eyebrow{
+  display:inline-block; background:var(--surface-2); color:var(--accent);
+  font-size:11.5px; font-weight:700; padding:5px 12px; border-radius:var(--radius);
+  letter-spacing:.04em; margin-bottom:18px; border:1px solid var(--line);
+}
+.hero h2{ font-size:26px; margin:0 0 10px; letter-spacing:-.01em; }
+.hero p{ font-size:14.5px; color:var(--ink-dim); max-width:560px; margin:0 auto 28px; line-height:1.65; }
+
+.cta{
+  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+  font-size:14.5px; font-weight:700; padding:13px 30px; border-radius:var(--radius);
+  border:1px solid var(--accent);
+}
+.cta:hover{ filter:brightness(0.95); }
+
+/* ========== Statistik ========== */
+.stats{ display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:40px; }
+.stat{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:20px; text-align:center;
+}
+.stat b{ display:block; font-size:28px; color:var(--accent); font-weight:800; }
+.stat span{ font-size:12px; color:var(--ink-dim); margin-top:4px; display:block; }
+
+/* ========== Info wilayah & fitur ========== */
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+.kartu{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px;
+}
+.kartu h3{
+  font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-dim);
+  margin:0 0 12px; font-weight:700;
+}
+.kartu ul{ margin:0; padding-left:18px; font-size:13.5px; line-height:1.9; }
+.kartu .wilayah b{ font-size:16px; display:block; }
+.kartu .wilayah span{ font-size:12.5px; color:var(--ink-dim); }
+
+/* ========== Catatan/disclaimer ========== */
+.note{
+  margin-top:24px; padding:14px 18px; background:#fdf0da; border:1px solid var(--warn);
+  border-radius:var(--radius); font-size:12.5px; color:#6b4a0a; line-height:1.6;
+}
+
+footer{
+  text-align:center; font-size:11.5px; color:var(--ink-dim); padding:24px; border-top:1px solid var(--line);
+}
+
+@media (max-width:640px){
+  .stats, .grid2{ grid-template-columns:1fr; }
+  .hero{ padding:32px 22px; }
+  .hero h2{ font-size:21px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
+  <div>
+    <h1>WebGIS Evakuasi Tsunami</h1>
+    <span>Informasi Jalur &amp; Shelter Evakuasi</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <span class="eyebrow">KERANGKA CAPSTONE</span>
+    <h2>Sistem Informasi Evakuasi Tsunami</h2>
+    <p>
+      Peta interaktif berisi lokasi shelter, jalur evakuasi, dan zona rawan genangan
+      di Desa Sidodadi. Dibuat untuk membantu masyarakat pesisir menemukan rute
+      tercepat menuju titik aman saat terjadi peringatan tsunami.
+    </p>
+    <a class="cta" href="peta.html">Masuk ke Peta Interaktif</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="jmlShelter">—</b><span>Titik Shelter</span></div>
+    <div class="stat"><b>9</b><span>Jalur Evakuasi</span></div>
+    <div class="stat"><b>1</b><span>Zona Rawan Genangan</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="kartu">
+      <h3>Wilayah Cakupan</h3>
+      <div class="wilayah">
+        <b>Desa Sidodadi</b>
+        <span>Kec. Teluk Pandan, Kab. Pesawaran, Lampung</span>
+      </div>
+    </div>
+
+    <div class="kartu">
+      <h3>Fitur Utama</h3>
+      <ul>
+        <li>Deteksi lokasi &amp; posisi manual</li>
+        <li>Pencarian shelter terdekat (rute jalan asli)</li>
+        <li>Basemap citra satelit &amp; peta jalan</li>
+        <li>Navigasi langsung ke Google Maps</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Catatan:</b> estimasi waktu dan jarak pada peta bersifat ilustratif untuk keperluan studi.
+    Untuk peringatan dini resmi, selalu rujuk informasi dari BMKG InaTEWS.
+  </div>
+
+</div>
+
+<footer>WebGIS Evakuasi Tsunami — Kerangka Capstone</footer>
+
+<script>
+  // Mengambil jumlah shelter langsung dari data asli, supaya angkanya
+  // selalu akurat walau nanti datanya bertambah/berkurang
+  fetch('data/shelter.geojson')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('jmlShelter').textContent = data.features.length;
+    })
+    .catch(() => {
+      document.getElementById('jmlShelter').textContent = '-';
+    });
+</script>
+
+</body>
+</html>

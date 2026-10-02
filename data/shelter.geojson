@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [105.251650597, -5.559427968] },
+      "properties": {
+        "nama": "Shelter Puncak Ringgung",
+        "kapasitas": 1200,
+        "foto": "images/Shelter_puncak_ringgung.jpeg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [105.230973292, -5.546278371] },
+      "properties": {
+        "nama": "Shelter Puncak Sidodadi",
+        "kapasitas": 800,
+        "foto": "images/Shelter_Sidodadi.jpeg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [105.236187105, -5.553848139] },
+      "properties": {
+        "nama": "Shelter Balai Desa",
+        "kapasitas": 400,
+        "foto": "images/balai_desa.jpeg"
+      }
+    }
+  ]
+}
